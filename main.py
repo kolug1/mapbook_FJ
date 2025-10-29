@@ -18,12 +18,20 @@ def add_user(users_data: list) -> None:
     users_data.append({"name": name, "location": location, "posts": posts})
 
 
-
-def remove_user(users_data)->None:
+def remove_user(users_data: list)->None:
     temp_name:str=str(input("Podaj imię użytkownika do usunięcia: "))
     for user in users_data:
         if user["name"] == temp_name:
             users_data.remove(user)
+
+
+def update_user(users_data: list)->None:
+    temp_name:str=str(input("Podaj imię użytkownika do aktualizacji: "))
+    for user in users_data:
+        if user["name"] == temp_name:
+            user["name"]= input("Podaj nowe imię użytkownika: ")
+            user["location"]=input("Podaj nową lokalizację: ")
+            user["posts"]=input("Podaj nową liczbę postów: ")
 
 
 while True:
@@ -41,3 +49,4 @@ while True:
         remove_user(users)
     if temp_choice == 4:
         print("Wybrano funkcję aktualizacji danych znajomego")
+        update_user(users)
