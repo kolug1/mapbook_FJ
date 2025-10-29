@@ -18,6 +18,13 @@ def add_user(users_data: list) -> None:
     users_data.append({"name": name, "location": location, "posts": posts})
 
 
+def remove_user(users_data)->None:
+    temp_name:str=str(input("Podaj imię użytkownika do usunięcia: "))
+    for user in users_data:
+        if user["name"] == temp_name:
+            users_data.remove(user)
+
+
 while True:
     temp_choice: int = int(input("Wybierz opcję menu "))
     if temp_choice == 0:
@@ -30,5 +37,6 @@ while True:
         add_user(users)
     if temp_choice == 3:
         print("Wybrano funkcję usuwania znajomego")
+        remove_user(users)
     if temp_choice == 4:
         print("Wybrano funkcję aktualizacji danych znajomego")
