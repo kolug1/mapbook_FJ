@@ -1,9 +1,9 @@
-zmienna_1:str= "Filip"
-zmienna_2:str= "Kasia"
-zmienna_3:str= "Krzysiu"
-zmienna_4:str= "Mati"
+users: list = [
+    {"name": "Filip", "location": "Warszawa", "posts": 67},
+    {"name": "Krzysiu", "location": "Radom", "posts": 2137},
+    {"name": "Asia", "location": "Siedlce", "posts": 4},
+    {"name": "Basia", "location": "Kraśnik", "posts": 88},
+]
 
-uzytkownicy:list=[zmienna_1,zmienna_2,zmienna_3,zmienna_4]
-
-for uzytkownik in uzytkownicy:
-    print(f" Hello {uzytkownik}")
+for user in users:
+    print(f"Twój znajomy {user["name"]} z miejscowości {user['location']} opublikował {user["posts"]} postów")
