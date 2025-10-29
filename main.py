@@ -18,6 +18,7 @@ def add_user(users_data: list) -> None:
     users_data.append({"name": name, "location": location, "posts": posts})
 
 
+
 def remove_user(users_data)->None:
     temp_name:str=str(input("Podaj imię użytkownika do usunięcia: "))
     for user in users_data:
