@@ -11,6 +11,13 @@ def user_info(users_data: list) -> None:
         print(f"Twój znajomy {user["name"]} z miejscowości {user['location']} opublikował {user["posts"]} postów")
 
 
+def add_user(users_data: list) -> None:
+    name: str = str(input("Podaj imię nowego znajomego: "))
+    location: str = str(input("Podaj lokalizację nowego znajomego: "))
+    posts: int = int(input("Podaj liczbę postów nowego znajomego: "))
+    users_data.append({"name": name, "location": location, "posts": posts})
+
+
 while True:
     temp_choice: int = int(input("Wybierz opcję menu "))
     if temp_choice == 0:
@@ -20,6 +27,7 @@ while True:
         user_info(users)
     if temp_choice == 2:
         print("Wybrano funkcję dodawania znajomego")
+        add_user(users)
     if temp_choice == 3:
         print("Wybrano funkcję usuwania znajomego")
     if temp_choice == 4:
