@@ -14,8 +14,8 @@ ramka_mapa = Frame(root)
 
 ramka_lista_obiektow.grid(row=0, column=0)
 ramka_formularz.grid(row=0, column=1)
-ramka_szczegolow_obiektu.grid(row=1, column=0)
-ramka_mapa.grid(row=2, column=0)
+ramka_szczegolow_obiektu.grid(row=1, column=0, columnspan=2)
+ramka_mapa.grid(row=2, column=0, columnspan=2)
 
 #RAMKA_LISTA_OBIEKTOW
 label_lista_obiektow = Label(ramka_lista_obiektow, text="Lista obiektów")
@@ -94,7 +94,7 @@ label_posty_szczegoly_obiektu_wartosc.grid(row=1, column=5)
 #RAMKA MAPY
 map_widget = tkintermapview.TkinterMapView(ramka_mapa, width=1025, height=600)
 map_widget.set_position(52.0,21.0)
-map_widget.set_zoom(6)
+map_widget.set_zoom(10)
 map_widget.grid(row=0, column=0)
 
 
