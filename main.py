@@ -10,6 +10,7 @@ class User:
         self.posts = posts
         self.img_url = img_url
         self.coords = self.get_coordinates()
+        self.marker = map_widget.set_marker(self.coords[0], self.coords[1], text=self.name)
 
     def get_coordinates(self):
         from bs4 import BeautifulSoup
@@ -48,6 +49,7 @@ def user_info(users_data: list):
 
 def delete_user(users_data: list):
     i = listbox_lista_obiektow.index(ACTIVE)
+    users_data[i].marker.delete()
     users_data.pop(i)
     user_info(users_data)
 
@@ -57,6 +59,8 @@ def user_details(users_data: list):
     label_imie_szczegoly_obiektu_wartosc.config(text=users_data[i].name)
     label_lokalizacja_szczegoly_obiektu_wartosc.config(text=users_data[i].location)
     label_posty_szczegoly_obiektu_wartosc.config(text=users_data[i].posts)
+    map_widget.set_position(users_data[i].coords[0], users_data[i].coords[1])
+    map_widget.set_zoom(14)
 
 
 def edit_user(users_data: list):
@@ -73,6 +77,9 @@ def update_user(users_data: list, i):
     users_data[i].location=entry_lokalizacja.get()
     users_data[i].posts=entry_posty.get()
     users_data[i].imgurl=entry_imgurl.get()
+    users_data[i].coords = users_data[i].get_coordinates()
+    users_data[i].marker.set_position(users_data[i].coords[0], users_data[i].coords[1])
+    users_data[i].marker.set_text(users_data[i].name)
     entry_name.delete(0, END)
     entry_lokalizacja.delete(0, END)
     entry_posty.delete(0, END)
