@@ -1,5 +1,6 @@
 from tkinter import *
 import tkintermapview
+from geocoder.osm import OsmQuery
 
 users: list = []
 
@@ -181,6 +182,14 @@ map_widget = tkintermapview.TkinterMapView(ramka_mapa, width=1025, height=600)
 map_widget.set_position(52.0,21.0)
 map_widget.set_zoom(10)
 map_widget.grid(row=0, column=0)
+
+
+
+
+
+
+
+print (tkintermapview.convert_address_to_coordinates("London"))
 
 
 
