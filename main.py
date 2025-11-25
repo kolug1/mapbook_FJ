@@ -27,18 +27,36 @@ class User:
 
 
 def add_user(users_data: list) -> None:
+    import psycopg2
+    db_engine = psycopg2.connect(
+        user="postgres",
+        database="postgres",
+        password="postgres",
+        host="localhost",
+        port="5432",
+    )
+    cursor = db_engine.cursor()
+
+
+
+
+
     name: str = entry_name.get()
     location: str = entry_lokalizacja.get()
     posts: int = int (entry_posty.get())
     img_url: str = entry_imgurl.get()
-    users_data.append(User(name, location, posts, img_url))
+    user = User(name=name, location=location, posts=posts, img_url = img_url)
+    users_data.append(user)
     print(users_data)
+    sql = f"INSERT INTO public.users(name, location, posts, imgurl, geometry) VALUES ('{name}','{location}',{posts},'{img_url}', 'SRID=4326;POINT({user.coords[0]} {user.coords[1]})');"
     user_info(users_data)
     entry_name.delete(0, END)
     entry_lokalizacja.delete(0, END)
     entry_posty.delete(0, END)
     entry_imgurl.delete(0, END)
     entry_name.focus()
+    cursor.execute(sql)
+    db_engine.commit()
 
 
 def user_info(users_data: list):
@@ -185,3 +203,4 @@ map_widget.grid(row=0, column=0)
 
 
 root.mainloop()
+
